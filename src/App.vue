@@ -1,5 +1,9 @@
 <template>
-  <div id="app">
+  <div id="app" class="app">
+    <!-- click btn: window scroll up -->
+    <router-link to="#home" class="scroll-up">
+      <i class="fas fa-chevron-up"></i>
+    </router-link>
     <router-view />
   </div>
 </template>
@@ -21,79 +25,121 @@
   text-decoration: none;
 }
 
-ul {
-  list-style: none;
-  padding: 0;
-}
-.btn {
-  padding: 12px 24px;
-  background-color: var(--yellow);
-  border: none;
-  font-size: 1.2rem;
-  letter-spacing: 1px;
-  color: #fff;
-  outline: none;
-  border-radius: 6px;
-  text-transform: capitalize;
-  transition: all 0.2s linear;
-  cursor: pointer;
-  &:hover {
-    background-color: var(--dark-yellow);
-    color: #fff !important;
+.app {
+  position: relative;
+  ul {
+    list-style: none;
+    padding: 0;
   }
-  &:active {
-    transform: scale(0.98) !important;
-  }
-  &_lg {
-    padding: 20px 40px;
+  .btn {
+    padding: 12px 24px;
+    background-color: var(--yellow);
+    border: none;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    color: #fff;
+    outline: none;
+    border-radius: 6px;
+    text-transform: capitalize;
+    transition: all 0.2s linear;
+    cursor: pointer;
+    &:hover {
+      background-color: var(--dark-yellow);
+      color: #fff !important;
+    }
+    &:active {
+      transform: scale(0.98) !important;
+    }
+    &_lg {
+      padding: 20px 40px;
+    }
+
+    &_outline {
+      border: 1.5px solid #a0a0a0;
+      background-color: #fff;
+      color: var(--yellow);
+      &:hover {
+        color: #fff;
+        border-color: var(--yellow);
+        background-color: var(--yellow);
+      }
+    }
   }
 
-  &_outline {
-    border: 1.5px solid #a0a0a0;
-    background-color: #fff;
-    color: var(--yellow);
+  .read-more {
+    display: inline-block;
+    color: #ffa500;
+    font-size: 15px;
+    font-weight: 700;
+    border-style: solid;
+    border-width: 2px 0px 0px 0px;
+    border-color: #ffa500;
+    border-radius: 5px 5px 5px 5px;
+    margin: 0px 0px 0px 0px;
+    padding: 10px 20px 10px 20px;
+    text-transform: uppercase;
+    transition: 0.25s;
     &:hover {
-      color: #fff;
-      border-color: var(--yellow);
-      background-color: var(--yellow);
+      color: #ffffff;
+      background-color: #ffa500;
+    }
+  }
+
+  .section-name {
+    color: var(--yellow);
+    font-size: 1.3rem;
+    text-transform: uppercase;
+  }
+  .title {
+    color: var(--black);
+    font-size: 2.6rem;
+    margin: 1.5rem 0 3rem 0;
+    line-height: 1.5;
+    letter-spacing: 1px;
+  }
+  .subtitle {
+    color: var(--light-black);
+    font-size: 1.2rem;
+    line-height: 1.5;
+  }
+
+  // windiw scroll up
+  .scroll-up {
+    display: inline-block;
+    visibility: hidden;
+    position: fixed;
+    right: 3rem;
+    bottom: 3rem;
+    width: 45px;
+    height: 45px;
+    color: #fff;
+    border-radius: 5px;
+    background-color: var(--yellow);
+    z-index: 99;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &.active {
+      visibility: visible;
+    }
+    i {
+      font-size: 2rem;
+      display: inline-block;
     }
   }
 }
-
-.read-more {
-  display: inline-block;
-  color: #ffa500;
-  font-size: 15px;
-  font-weight: 700;
-  border-style: solid;
-  border-width: 2px 0px 0px 0px;
-  border-color: #ffa500;
-  border-radius: 5px 5px 5px 5px;
-  margin: 0px 0px 0px 0px;
-  padding: 10px 20px 10px 20px;
-  text-transform: uppercase;
-  transition: 0.25s;
-  &:hover {
-    color: #ffffff;
-    background-color: #ffa500;
-  }
-}
-
-.section-name {
-  color: var(--yellow);
-  font-size: 1.3rem;
-  text-transform: uppercase;
-}
-.title {
-  color: var(--black);
-  font-size: 2.6rem;
-  margin: 1.5rem 0 3rem 0;
-  line-height: 1.5;
-  letter-spacing: 1px;
-}
-.subtitle {
-  color: var(--light-black);
-  font-size: 1.2rem;
-  line-height: 1.5;
-}
 </style>
+
+<script>
+export default {
+  mounted() {
+    window.onscroll = function () {
+      if (window.scrollY > 600) {
+        document.querySelector(".scroll-up").classList.add("active");
+      } else {
+        document.querySelector(".scroll-up").classList.remove("active");
+      }
+    };
+  },
+};
+</script>
