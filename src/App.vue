@@ -129,17 +129,3 @@
   }
 }
 </style>
-
-<script>
-export default {
-  mounted() {
-    window.onscroll = function () {
-      if (window.scrollY > 600) {
-        document.querySelector(".scroll-up").classList.add("active");
-      } else {
-        document.querySelector(".scroll-up").classList.remove("active");
-      }
-    };
-  },
-};
-</script>

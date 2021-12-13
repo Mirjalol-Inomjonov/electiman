@@ -58,8 +58,10 @@ export default {
     window.onscroll = function () {
       if (window.scrollY > 100) {
         document.querySelector(".header").classList.add("active");
+        document.querySelector(".scroll-up").classList.add("active");
       } else {
         document.querySelector(".header").classList.remove("active");
+        document.querySelector(".scroll-up").classList.remove("active");
       }
     };
   },
